@@ -15,6 +15,7 @@ import XMonad.Util.Run
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Spacing
 import XMonad.Layout.Reflect
+import XMonad.Hooks.EwmhDesktops
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -263,7 +264,7 @@ myStartupHook = do
 main = do
   -- launch xmobar on first monitor
   xmproc <- spawnPipe "xmobar -x 0 /home/jack/.config/xmobar/xmobar.config"
-  xmonad $ docks defaults
+  xmonad $ ewmh $ docks defaults
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
