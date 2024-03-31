@@ -13,8 +13,10 @@ import System.Exit
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Run
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.Spacing
 import XMonad.Layout.Reflect
+import XMonad.Layout.Fullscreen
 import XMonad.Hooks.EwmhDesktops
 
 import qualified XMonad.StackSet as W
@@ -222,6 +224,7 @@ myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
     , className =? "KeePassXC"      --> doFloat
+    , isFullscreen                  --> doFullFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
