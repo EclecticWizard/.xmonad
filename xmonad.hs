@@ -117,11 +117,17 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Deincrement the number of windows in the master area
     , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
 
-    -- Start My Binds
+-- Start My Binds
     -- Emacs ScratchPad
     , ((modm .|. shiftMask, xK_n), spawn "emacs ~/Documents/Notes/Scratch/Scratch.org")
 
-    -- End My Binds
+    -- Obsidian
+
+    -- Screen lock (as this doesn't work with the standard kde bind now)
+
+    -- web browser (set this to a variable cos you keep changing your mind as to the browser you use)
+
+-- End My Binds
 
     -- Toggle the status bar gap
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
