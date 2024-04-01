@@ -119,7 +119,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Start My Binds
     -- Emacs ScratchPad
-    , ((modm .|. shiftMask, xK_n), spawnOnce "emacs ~/Documents/Notes/Scratch/Scratch.org")
+    , ((modm .|. shiftMask, xK_n), spawn "emacs ~/Documents/Notes/Scratch/Scratch.org")
 
     -- End My Binds
 
