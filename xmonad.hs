@@ -127,6 +127,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- web browser (set this to a variable cos you keep changing your mind as to the browser you use)
 
+    -- can you get a power menu? (sleep, logout, poweroff, reboot)
+
 -- End My Binds
 
     -- Toggle the status bar gap
@@ -228,6 +230,7 @@ myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
     , className =? "KeePassXC"      --> doFloat
+    , className =? "Picture-in-Picture"          --> doFloat
     , isFullscreen                  --> doFullFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
