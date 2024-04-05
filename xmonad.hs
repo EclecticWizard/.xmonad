@@ -19,7 +19,7 @@ import qualified Data.Map        as M
 -- certain contrib modules.
 --
 myTerminal      = "konsole"
-browser         = "flatpak run one.ablaze.floorp"
+myBrowser       = "flatpak run one.ablaze.floorp"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -127,7 +127,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Screen lock (as this doesn't work with the standard kde bind now)
 
     -- web browser (set this to a variable cos you keep changing your mind as to the browser you use)
-    , ((modm .|. shiftMask, xK_b), spawn browser)
+    , ((modm .|. shiftMask, xK_b), spawn myBrowser)
     -- can you get a power menu? (sleep, logout, poweroff, reboot)
 
 -- End My Binds
@@ -355,4 +355,9 @@ help = unlines ["The default modifier key is 'alt'. Default keybindings:",
     "-- Mouse bindings: default actions bound to mouse events",
     "mod-button1  Set the window to floating mode and move by dragging",
     "mod-button2  Raise the window to the top of the stack",
-    "mod-button3  Set the window to floating mode and resize by dragging"]
+    "mod-button3  Set the window to floating mode and resize by dragging",
+    "",
+    "-- added binds",
+    "mod-Shift-n  Opens scratch.org in Emacs, creates file if it doesn't exist (and you write to it)",
+    "mod-Shift-o  Spawns Obsidian (Flatpak)",
+    "mod-Shift-b  Spawns chosen web browser as defined in myBrowser variable"]
