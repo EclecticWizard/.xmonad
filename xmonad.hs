@@ -231,7 +231,7 @@ myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
     , className =? "KeePassXC"      --> doFloat
-    , className =? "Picture-in-Picture"          --> doFloat
+    , title =? "Picture-in-picture" --> doFloat
     , isFullscreen                  --> doFullFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
