@@ -19,6 +19,7 @@ import qualified Data.Map        as M
 -- certain contrib modules.
 --
 myTerminal      = "konsole"
+browser         = "flatpak run one.ablaze.floorp"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -122,11 +123,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_n), spawn "emacs ~/Documents/Notes/Scratch/Scratch.org")
 
     -- Obsidian
-
+    , ((modm .|. shiftMask, xK_o), spawn "flatpak run md.obsidian.Obsidian")
     -- Screen lock (as this doesn't work with the standard kde bind now)
 
     -- web browser (set this to a variable cos you keep changing your mind as to the browser you use)
-
+    , ((modm .|. shiftMask, xK_b), spawn browser)
     -- can you get a power menu? (sleep, logout, poweroff, reboot)
 
 -- End My Binds
