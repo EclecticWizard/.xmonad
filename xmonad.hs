@@ -104,10 +104,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_k     ), windows W.swapUp    )
 
     -- Shrink the master area
-    , ((modm,               xK_h     ), sendMessage Shrink)
+    , ((modm .|. shiftMask, xK_h     ), sendMessage Shrink)
 
     -- Expand the master area
-    , ((modm,               xK_l     ), sendMessage Expand)
+    , ((modm .|. shiftMask, xK_l     ), sendMessage Expand)
 
     -- Push window back into tiling
     , ((modm,               xK_t     ), withFocused $ windows . W.sink)
@@ -124,10 +124,12 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Obsidian
     , ((modm .|. shiftMask, xK_o), spawn "flatpak run md.obsidian.Obsidian")
-    -- Screen lock (as this doesn't work with the standard kde bind now)
 
+    -- Screen lock
+    , ((modm              , xK_l), spawn "~/Scripts/lock.sh")
     -- web browser (set this to a variable cos you keep changing your mind as to the browser you use)
     , ((modm .|. shiftMask, xK_b), spawn myBrowser)
+
     -- can you get a power menu? (sleep, logout, poweroff, reboot)
 
 -- End My Binds
