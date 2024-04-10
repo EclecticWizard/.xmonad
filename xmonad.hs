@@ -7,10 +7,15 @@ import XMonad.Util.SpawnOnce
 import XMonad.Util.Run
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+
 import XMonad.Layout.Spacing
 import XMonad.Layout.Reflect
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.Tabbed
+import XMonad.Layout.NoBorders
+import XMonad.Layout.TwoPane
+import XMonad.Layout.Master
+
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Actions.SpawnOn
 
@@ -55,8 +60,10 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#ff0000"
+myNormalBorderColor  = "#000000"
+  -- Original Colour"#dddddd"
+myFocusedBorderColor = "#7F00FF"
+  -- Original Colour "#ff0000"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -200,9 +207,10 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts (flip_tiled ||| tiled ||| Mirror tiled ||| Full ||| simpleTabbed)
+myLayout = avoidStruts (flipTiled ||| masterTabbed ||| flipTabbed ||| Mirror tiled ||| noBorders (Full)
+                        ||| noBorders (simpleTabbed))
   where
-     flip_tiled   = reflectHoriz $ Tall nmaster delta ratio 
+     flipTiled   = reflectHoriz $ Tall nmaster delta ratio
 
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -216,6 +224,9 @@ myLayout = avoidStruts (flip_tiled ||| tiled ||| Mirror tiled ||| Full ||| simpl
      -- Percent of screen to increment by when resizing panes
      delta   = 3/100
 
+     masterTabbed = mastered (3/100) (1/2) simpleTabbed
+
+     flipTabbed = reflectHoriz $ masterTabbed
 ------------------------------------------------------------------------
 -- Window rules:
 
