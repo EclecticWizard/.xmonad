@@ -10,7 +10,9 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.Spacing
 import XMonad.Layout.Reflect
 import XMonad.Layout.Fullscreen
+import XMonad.Layout.Tabbed
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Actions.SpawnOn
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -198,7 +200,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts (flip_tiled ||| tiled ||| Mirror tiled ||| Full)
+myLayout = avoidStruts (flip_tiled ||| tiled ||| Mirror tiled ||| Full ||| simpleTabbed)
   where
      flip_tiled   = reflectHoriz $ Tall nmaster delta ratio 
 
@@ -268,6 +270,9 @@ myLogHook = return ()
 myStartupHook = do
   spawnOnce "nitrogen --restore &"
   spawnOnce "picom &"
+  spawnOn "1" myBrowser
+  spawnOn "1" "flatpak run io.freetubeapp.FreeTube"
+  spawnOn "1" "flatpak run md.obsidian.Obsidian"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
