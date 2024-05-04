@@ -15,7 +15,7 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.NoBorders
 import XMonad.Layout.TwoPane
 import XMonad.Layout.Master
-
+import XMonad.Layout.Spiral
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Actions.SpawnOn
 
@@ -207,10 +207,12 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts (flipTiled ||| masterTabbed ||| flipTabbed ||| Mirror tiled ||| noBorders (Full)
+myLayout = avoidStruts (flipTiled ||| masterTabbed ||| flipSpiral
                         ||| noBorders (simpleTabbed))
   where
      flipTiled   = reflectHoriz $ Tall nmaster delta ratio
+
+     flipSpiral = reflectHoriz (reflectVert $ spiral (6/7))
 
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
