@@ -285,9 +285,11 @@ myLogHook = return ()
 myStartupHook = do
   spawnOnce "nitrogen --restore &"
   spawnOnce "picom &"
+  spawnOnce "xrandr --output DP-0 --primary --mode \"2560x1440\" --rate 170.00"
   spawnOn "1" myBrowser
   spawnOn "1" "flatpak run io.freetubeapp.FreeTube"
   spawnOn "1" "flatpak run md.obsidian.Obsidian"
+
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
