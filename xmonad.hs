@@ -17,6 +17,7 @@ import XMonad.Layout.TwoPane
 import XMonad.Layout.Master
 import XMonad.Layout.Spiral
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.DynamicLog
 import XMonad.Actions.SpawnOn
 
 import qualified XMonad.StackSet as W
@@ -25,7 +26,7 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "konsole"
+myTerminal      = "warp-terminal"
 myBrowser       = "flatpak run one.ablaze.floorp"
 
 -- Whether focus follows the mouse pointer.
@@ -71,7 +72,7 @@ myFocusedBorderColor = "#7F00FF"
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch a terminal
-    [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+    [ ((modm .|. shiftMask, xK_Return), spawn $ myTerminal)
 
     -- launch dmenu
     , ((modm,               xK_p     ), spawn "dmenu_run")
@@ -298,7 +299,7 @@ myStartupHook = do
 --
 main = do
   -- launch xmobar on first monitor
-  xmproc <- spawnPipe "xmobar -x 0 /home/jack/.config/xmobar/xmobar.config"
+  xmproc <- spawnPipe "xmobar -x 0 /home/jack/.config/xmobar/orignal/xmobar.config"
   xmonad $ ewmh $ docks defaults
 
 -- A structure containing your configuration settings, overriding
