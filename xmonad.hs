@@ -26,8 +26,8 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "warp-terminal"
-myBrowser       = "flatpak run one.ablaze.floorp"
+myTerminal      = "konsole"
+myBrowser       = "/home/jack/.local/share/AppImage/ZenBrowser.AppImage"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -273,7 +273,7 @@ myEventHook = mempty
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = return ()
+myLogHook = return()
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -288,9 +288,8 @@ myStartupHook = do
   spawnOnce "picom &"
   spawnOnce "xrandr --output DP-0 --primary --mode \"2560x1440\" --rate 170.00"
   spawnOn "1" myBrowser
-  spawnOn "1" "flatpak run io.freetubeapp.FreeTube"
+ -- spawnOn "1" "flatpak run io.freetubeapp.FreeTube"
   spawnOn "1" "flatpak run md.obsidian.Obsidian"
-
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
@@ -299,7 +298,7 @@ myStartupHook = do
 --
 main = do
   -- launch xmobar on first monitor
-  xmproc <- spawnPipe "xmobar -x 0 /home/jack/.config/xmobar/orignal/xmobar.config"
+  xmproc <- spawnPipe "xmobar -d" --"xmobar -x 0 /home/jack/.dotfiles/.config/xmobar/doom/xmobar.config"
   xmonad $ ewmh $ docks defaults
 
 -- A structure containing your configuration settings, overriding
