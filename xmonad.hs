@@ -133,7 +133,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_n), spawn "emacs ~/Documents/Notes/Scratch/Scratch.org")
 
     -- Obsidian
-    , ((modm .|. shiftMask, xK_o), spawn "flatpak run md.obsidian.Obsidian")
+    , ((modm .|. shiftMask, xK_o), spawn "~/Applications/Obsidian/Obsidian.AppImage")
 
     -- Screen lock
     , ((modm              , xK_l), spawn "~/Scripts/lock.sh")
@@ -289,7 +289,7 @@ myStartupHook = do
   spawnOnce "xrandr --output DP-0 --primary --mode \"2560x1440\" --rate 170.00"
   spawnOn "1" myBrowser
  -- spawnOn "1" "flatpak run io.freetubeapp.FreeTube"
-  spawnOn "1" "flatpak run md.obsidian.Obsidian"
+  spawnOn "1" "~/Applications/Obsidian/Obsidian.AppImage"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
