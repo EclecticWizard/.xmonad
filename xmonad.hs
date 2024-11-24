@@ -290,6 +290,7 @@ myStartupHook = do
   spawnOn "1" myBrowser
  -- spawnOn "1" "flatpak run io.freetubeapp.FreeTube"
   spawnOn "1" "~/Applications/Obsidian/Obsidian.AppImage"
+  spawnOn "1" "~/Applications/Todoist/Todoist.AppImage"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
